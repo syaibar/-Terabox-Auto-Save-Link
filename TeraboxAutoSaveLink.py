@@ -20,17 +20,22 @@ options = Options()
 options.add_experimental_option("detach", True)  # Agar browser tidak langsung tertutup
 driver = webdriver.Chrome(options=options)
 
-# Login manual
-print("🔐 Silakan login dulu ke akun Terabox...")
-driver.get("https://www.terabox.com")
-input("✅ Setelah login dan masuk dashboard, tekan Enter untuk mulai proses...")
-
 # Baca daftar link
 try:
     with open(LINK_FILE, "r") as f:
         links = [line.strip() for line in f if line.strip()]
 except FileNotFoundError:
     print(f"❌ File '{LINK_FILE}' tidak ditemukan.")
+    driver.quit()
+    exit()
+
+# Arahkan ke link pertama untuk login langsung di halaman yang relevan
+if links:
+    print("🔐 Silakan login terlebih dahulu di halaman pertama link Terabox...")
+    driver.get(links[0])
+    input("✅ Setelah login dan masuk dashboard, tekan Enter untuk mulai proses...")
+else:
+    print("❌ Daftar link kosong!")
     driver.quit()
     exit()
 
