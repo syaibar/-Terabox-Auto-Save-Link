@@ -39,7 +39,7 @@ terabox-auto-save/
 │
 ├── TeraboxAutoSaveLink.py             # file utama program
 ├── chromedriver.exe                   # taruh di sini (khusus Windows)
-└── links.txt                           # daftar link publik Terabox
+└── links.txt                          # daftar link publik Terabox
 ```
 
 ---
